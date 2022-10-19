@@ -13,14 +13,17 @@
 
 class LibInterface {
 
-	public: 
-	LibInterface(std::string name);
-	~LibInterface();
 	void* LibHandler;
 	void* pFun;
+
+	public: 
+	LibInterface();
+	~LibInterface();
+	int Load(std::string name);
 	Interp4Command* pCmd;
-	std::string CmdName;
 	Interp4Command *(*pCreateCmd)(void);	
+	std::string CmdName;
+
 };
 
 

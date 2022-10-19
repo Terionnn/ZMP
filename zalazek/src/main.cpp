@@ -7,6 +7,8 @@
 #include "LibInterface.hh"
 
 #define name_move "libInterp4Move.so"
+#define name_rotate "libInterp4Rotate.so"
+
 #define LINE_SIZE 100
 
 using namespace std;
@@ -36,7 +38,11 @@ return pclose(pProc) == 0;
 
 int main()
 {
-  LibInterface move(name_move);
+  LibInterface move;
+  move.Load(name_move);
+
+  LibInterface rotate;
+  rotate.Load(name_rotate);
 
   cout << endl;
   cout << move.CmdName << endl;
