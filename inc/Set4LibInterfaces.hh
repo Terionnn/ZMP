@@ -4,22 +4,15 @@
 #include <sstream>
 #include "LibInterface.hh"
 #include "Interp4Command.hh"
-#include <vector>
-#include <memory>
 
-
-
-#define LINE_SIZE 500
 
 
 class Set4LibInterfaces
 {
+
 public:
 Set4LibInterfaces();
-  std::map<std::string, LibInterface *> Lib;
-  
-
-
+  std::map<std::string, LibInterface *> Library;
   LibInterface *move = new LibInterface();
   LibInterface *rotate = new LibInterface();
   LibInterface *set = new LibInterface();

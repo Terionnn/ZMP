@@ -40,28 +40,32 @@ bool ExecPreprocesor(const char *NazwaPliku, istringstream &IStrm4Cmds)
 
 bool interpret(istringstream &stream, Set4LibInterfaces Lib)
 {
-  string str;
-  LibInterface *Lib_;
-  Interp4Command *cmd;
+  LibInterface *tmpLib;
+  Interp4Command *command;
+  string tmp;
 
-  while (stream >> str)
+  while (stream >> tmp)
   {
-    map<string, LibInterface *>::iterator iterator = Lib.Lib.find(str);
-    cout << "Wczytano polecenie " << str << endl;
-    if (iterator == Lib.Lib.end())
+    map<string, LibInterface *>::iterator iterator = Lib.Library.find(tmp);
+    cout << "Wczytano polecenie " << tmp << endl;
+    if (iterator == Lib.Library.end())
     {
-      cout << "Nie znaleziono wtyczki " << str << endl;
+      cout << "Nie znaleziono wtyczki " << tmp << endl;
       return 1;
     }
+    tmpLib = iterator->second;
 
-    Lib_ = iterator->second;
-    cmd = Lib_->pCreateCmd();
-    cmd->ReadParams(stream);
-    cmd->PrintCmd();
-    // cmd->ExecCmd();
+    command = tmpLib->pCreateCmd();
+    
+    if(!command->ReadParams(stream)){
+cout << "Wystapil blad podczas wczytywania danych" <<  endl;
+    return 1;
+    }
+    command->PrintCmd();
+    // command->ExecCmd();
   }
-  delete cmd;
-  delete Lib_;
+  delete command;
+  delete tmpLib;
   return 0;
 }
 

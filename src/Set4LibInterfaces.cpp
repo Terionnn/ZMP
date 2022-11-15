@@ -18,8 +18,8 @@ Set4LibInterfaces::Set4LibInterfaces()
   set->Load("libs/libInterp4Set.so");
   move->Load("libs/libInterp4Move.so");
 
-  Lib.insert(make_pair("Rotate", rotate));
-  Lib.insert(make_pair("Pause", pause));
-  Lib.insert(make_pair("Set", set));
-  Lib.insert(make_pair("Move", move));
+  Library.insert(make_pair("Rotate", rotate));
+  Library.insert(make_pair("Pause", pause));
+  Library.insert(make_pair("Set", set));
+  Library.insert(make_pair("Move", move));
 }

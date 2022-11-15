@@ -1,5 +1,5 @@
 #define ROT 40
-Set Ob_A 2 0 ROT 
+Set Ob_A 20 0 ROT 
 Set Ob_B 10 10 0 
 Pause 1000
 
