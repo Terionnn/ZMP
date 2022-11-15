@@ -10,13 +10,13 @@
 #include <string>
 #include <map>
 using namespace std;
-Set4LibInterfaces::Set4LibInterfaces(){
+Set4LibInterfaces::Set4LibInterfaces()
+{
 
   rotate->Load("libs/libInterp4Rotate.so");
   pause->Load("libs/libInterp4Pause.so");
   set->Load("libs/libInterp4Set.so");
   move->Load("libs/libInterp4Move.so");
-
 
   Lib.insert(make_pair("Rotate", rotate));
   Lib.insert(make_pair("Pause", pause));

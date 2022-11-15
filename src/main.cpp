@@ -60,7 +60,8 @@ bool interpret(istringstream &stream, Set4LibInterfaces Lib)
     cmd->PrintCmd();
     // cmd->ExecCmd();
   }
-  delete cmd, Lib;
+  delete cmd;
+  delete Lib_;
   return 0;
 }
 
