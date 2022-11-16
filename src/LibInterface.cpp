@@ -28,6 +28,7 @@ int LibInterface::Load(string name)
   pCmd = pCreateCmd();
 
   CmdName = pCmd->GetCmdName();
+  return 0;
 }
 
 LibInterface::LibInterface()

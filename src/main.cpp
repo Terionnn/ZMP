@@ -58,7 +58,7 @@ bool interpret(istringstream &stream, Set4LibInterfaces Lib)
     command = tmpLib->pCreateCmd();
     
     if(!command->ReadParams(stream)){
-cout << "Wystapil blad podczas wczytywania danych" <<  endl;
+    cout << "Wystapil blad podczas wczytywania danych" <<  endl;
     return 1;
     }
     command->PrintCmd();
