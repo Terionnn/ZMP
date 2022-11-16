@@ -4,18 +4,16 @@
 #include <sstream>
 #include "LibInterface.hh"
 #include "Interp4Command.hh"
-
+#include <memory>
 
 
 class Set4LibInterfaces
 {
-
 public:
-Set4LibInterfaces();
-  std::map<std::string, LibInterface *> Library;
-  LibInterface *move = new LibInterface();
-  LibInterface *rotate = new LibInterface();
-  LibInterface *set = new LibInterface();
-  LibInterface *pause = new LibInterface();
+
+   Set4LibInterfaces();
+  std::map<std::string, std::shared_ptr<LibInterface>>Library;
+  void Load(std::string sciezka);
+
 
 };

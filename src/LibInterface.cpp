@@ -13,7 +13,7 @@ int LibInterface::Load(string name)
 
   if (!LibHandler)
   {
-    cerr << "!!! Brak biblioteki: Interp4Move.so" << endl;
+    cerr << "!!! Brak biblioteki!" << endl;
     return 1;
   }
 

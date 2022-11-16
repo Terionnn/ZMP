@@ -40,13 +40,13 @@ bool ExecPreprocesor(const char *NazwaPliku, istringstream &IStrm4Cmds)
 
 bool interpret(istringstream &stream, Set4LibInterfaces Lib)
 {
-  LibInterface *tmpLib;
+  shared_ptr<LibInterface> tmpLib;
   Interp4Command *command;
   string tmp;
 
   while (stream >> tmp)
   {
-    map<string, LibInterface *>::iterator iterator = Lib.Library.find(tmp);
+    map<string, shared_ptr<LibInterface>>::iterator iterator = Lib.Library.find(tmp);
     cout << "Wczytano polecenie " << tmp << endl;
     if (iterator == Lib.Library.end())
     {
@@ -65,8 +65,7 @@ bool interpret(istringstream &stream, Set4LibInterfaces Lib)
     // command->ExecCmd();
   }
   delete command;
-  delete tmpLib;
-  return 0;
+    return 0;
 }
 
 int main()
