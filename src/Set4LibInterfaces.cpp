@@ -12,10 +12,10 @@
 using namespace std;
 Set4LibInterfaces::Set4LibInterfaces()
 {
- Load("libs/libInterp4Rotate.so");
- Load("libs/libInterp4Pause.so");
- Load("libs/libInterp4Set.so");
- Load("libs/libInterp4Move.so");
+ Load("libInterp4Rotate.so");
+ Load("libInterp4Pause.so");
+ Load("libInterp4Set.so");
+ Load("libInterp4Move.so");
 }
 
 void Set4LibInterfaces::Load(string sciezka)
