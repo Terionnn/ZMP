@@ -22,8 +22,10 @@ LDFLAGS=-Wall
 
 
 
-interp: obj/main.o obj/LibInterface.o obj/Set4LibInterfaces.o
-	g++ ${LDFLAGS} -o interp  obj/main.o obj/LibInterface.o obj/Set4LibInterfaces.o -ldl
+interp: obj/main.o obj/LibInterface.o obj/Set4LibInterfaces.o obj/xmlinterp.o obj/Reader.o obj/Sender.o obj/Scene.o
+	g++ ${LDFLAGS} -o interp  obj/main.o obj/LibInterface.o obj/Set4LibInterfaces.o obj/xmlinterp.o obj/Reader.o obj/Sender.o obj/Scene.o -ldl -lxerces-c
+
+
 	
 obj/Set4LibInterfaces.o: src/Set4LibInterfaces.cpp inc/Set4LibInterfaces.hh
 	g++ -c ${CPPFLAGS} -o obj/Set4LibInterfaces.o src/Set4LibInterfaces.cpp
@@ -31,8 +33,22 @@ obj/Set4LibInterfaces.o: src/Set4LibInterfaces.cpp inc/Set4LibInterfaces.hh
 obj/LibInterface.o: src/LibInterface.cpp inc/LibInterface.hh
 	g++ -c ${CPPFLAGS} -o obj/LibInterface.o src/LibInterface.cpp
 
+
+obj/xmlinterp.o: src/xmlinterp.cpp inc/xmlinterp.hh
+	g++ -c ${CPPFLAGS} -o obj/xmlinterp.o src/xmlinterp.cpp
+
+obj/Scene.o: src/Scene.cpp inc/Scene.hh
+	g++ -c ${CPPFLAGS} -o obj/Scene.o src/Scene.cpp	
+
+obj/Reader.o: src/Reader.cpp inc/Reader.hh
+	g++ -c ${CPPFLAGS} -o obj/Reader.o src/Reader.cpp	
+
+obj/Sender.o: src/Sender.cpp inc/Sender.hh
+	g++ -c ${CPPFLAGS} -o obj/Sender.o src/Sender.cpp	
+
 obj/main.o: src/main.cpp inc/Interp4Command.hh inc/Set4LibInterfaces.hh
 	g++ -c ${CPPFLAGS} -o obj/main.o src/main.cpp
+
 
 clean:
 	rm -f obj/* interp core*

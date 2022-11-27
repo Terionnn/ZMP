@@ -1,0 +1,17 @@
+Skorzystanie z niniejszego oprogramowania wymaga zainstalowania
+ - biblioteki Qt5
+ - pakietu QGLViewer-qt5 (pakiety: libqglviewer2-qt5, libqglviewer-dev-qt5,
+                          libqglviewer-headers)
+ - biblioteki SOIL (pakiety: libsoil-dev, libsoil1)
+
+Nazwy i wersje pakietów mogą się różnić w zależności od dystrybucji
+Linuksa. Niezmienne zazwyczaj pozostają nazwy typu: libqglviewer-dev-qt5
+i libsoil-dev.
+
+Chcąc zmienić tło i podać inny plik, należy zmodyfikować
+odpowiednio zawartość pliku inc/gsv-BackgroundImage.h
+Znajduje się w nim definicja symbolu FILE_BACKGROUND_IMAGE
+W miejsce starej nazwy pliku, należy wpisać nazwę własnego pliku
+ze ścieżką dostępu (o ile plik nie jest w katalogu bieżącym).
+
+Numer portu komunikacyjnego znajduje się w pliku: gsv-Const.h

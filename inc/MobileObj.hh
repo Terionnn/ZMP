@@ -23,6 +23,8 @@
     * Nazwy metod są obowiązujące.
     */
     class MobileObj {
+
+
        /*!
         * \brief Kąt \e yaw reprezentuje rotację zgodnie z ruchem wskazówek zegara
         *        wokół osi \e OZ.
@@ -67,6 +69,14 @@
        std::string  _Name;
 
      public:
+     
+       Vector3D scale;
+       Vector3D translation;
+       Vector3D rgb;
+          void setScale(Vector3D new_scale) { scale = new_scale; }
+       void setRgb(Vector3D new_rgb) { rgb = new_rgb; }
+       void setTranslation(Vector3D new_trans) { translation = new_trans; }
+    
       /*!
        * \brief Udostępia wartość kąta \e roll.
        *
