@@ -111,8 +111,7 @@ void XMLInterp4Config::ProcessCubeAttrs(const xercesc::Attributes  &rAttrs)
       << "     " << sName_Scale << " = \"" << sValue_Scale << "\"" << endl
       << "     " << sName_RGB << " = \"" << sValue_RGB << "\"" << endl   
       << endl; 
-      config.addName(sValue_Name);
-      config.addScale(sValue_Scale);
+      
  //-----------------------------------------------------------------------------
  // Przykład czytania wartości parametrów
  // Ten przykład jest zrobiony "na piechotę" wykorzystując osobne zmienne.

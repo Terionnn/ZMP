@@ -15,14 +15,14 @@ int main()
 {
   Set4LibInterfaces Lib;
   istringstream stream;
-  Configuration Config;
+  Configuration config;
   Reader reader;
 
   reader.execPreprocesor("polecenia.cmd", stream);
   reader.interpret(stream, Lib);
-  reader.ReadFile("config/config.xml", Config);
+  reader.ReadFile("config/config.xml", config);
 
-  Scene scene(Config);
+  Scene scene(config);
   Sender sender(&scene);
   sender.OpenConnection();
 
