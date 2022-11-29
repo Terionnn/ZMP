@@ -16,9 +16,13 @@ using namespace std;
  */
 XMLInterp4Config::XMLInterp4Config(Configuration &rConfig)
 {
+  config = rConfig;
 }
 
-
+void XMLInterp4Config::Init(Configuration cfg)
+{
+  config = cfg;
+}
 /*!
  * Metoda wywoływana jest bezpośrednio przed rozpoczęciem
  * przetwarzana dokumentu XML.
@@ -107,6 +111,8 @@ void XMLInterp4Config::ProcessCubeAttrs(const xercesc::Attributes  &rAttrs)
       << "     " << sName_Scale << " = \"" << sValue_Scale << "\"" << endl
       << "     " << sName_RGB << " = \"" << sValue_RGB << "\"" << endl   
       << endl; 
+      config.addName(sValue_Name);
+      config.addScale(sValue_Scale);
  //-----------------------------------------------------------------------------
  // Przykład czytania wartości parametrów
  // Ten przykład jest zrobiony "na piechotę" wykorzystując osobne zmienne.
@@ -121,6 +127,7 @@ void XMLInterp4Config::ProcessCubeAttrs(const xercesc::Attributes  &rAttrs)
  // IStrm >> Scale;
  //
  istringstream   IStrm;
+
  
  IStrm.str(sValue_Scale);
  double  Sx,Sy,Sz;
@@ -134,7 +141,7 @@ void XMLInterp4Config::ProcessCubeAttrs(const xercesc::Attributes  &rAttrs)
  }
 
  // Tu trzeba wstawić odpowiednio własny kod ...
-
+ 
  xercesc::XMLString::release(&sName_Name);
  xercesc::XMLString::release(&sName_Scale);
  xercesc::XMLString::release(&sName_RGB);

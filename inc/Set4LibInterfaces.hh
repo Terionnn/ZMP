@@ -10,10 +10,7 @@
 class Set4LibInterfaces
 {
 public:
-
    Set4LibInterfaces();
   std::map<std::string, std::shared_ptr<LibInterface>>Library;
   void Load(std::string sciezka);
-
-
 };

@@ -27,6 +27,7 @@ class XMLInterp4Config : public xercesc::DefaultHandler {
     * \brief Inicjalizuje obiekt i kojarzy go z listą poleceń robota
     */
   XMLInterp4Config(Configuration &rConfig);
+  void Init(Configuration rConfig);
 
    /*!
     * \brief Wywoływana jest na początku dokumentu
@@ -84,6 +85,8 @@ class XMLInterp4Config : public xercesc::DefaultHandler {
      */
     void ProcessCubeAttrs(const xercesc::Attributes&   rAttrs); 
   private:
+    Configuration config;
+
 };
 
 #endif

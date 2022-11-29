@@ -12,29 +12,16 @@
 
 class Sender
 {
- 
     volatile bool _ContinueLooping = true;
- 
     int _Socket = 0;
- 
     Scene *_pScn = nullptr;
-
+    
 public:
- 
     Sender(Scene *pScn) : _pScn(pScn) {}
-
     ~Sender();
-
     bool OpenConnection();
-
-  
     int Send(const char *sMesg);
-
-  
     bool ShouldCountinueLooping() const { return _ContinueLooping; }
-  
     void CancelCountinueLooping() { _ContinueLooping = false; }
-
-   
     void Watching_and_Sending();
 };

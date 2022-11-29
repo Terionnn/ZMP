@@ -5,35 +5,75 @@
 #include <string>
 #include "Vector3D.hh"
 
+class Configuration
+{
 
-class Configuration {
-  
-  private:
-  std::vector<std::string> libraries_vector;
-  std::vector<std::string> object_names_vector;
-  std::vector<Vector3D> object_scales_vector;
-  std::vector<Vector3D> object_rgbs_vector;
-  std::vector<Vector3D> object_shift_vector;
-  std::vector<Vector3D> object_rot_vector;
-  std::vector<Vector3D> object_trans_vector;
+private:
+  std::vector<std::string> libraries;
+  std::vector<std::string> names;
+  std::vector<Vector3D> rgb;
+  std::vector<Vector3D> scale;
+  std::vector<Vector3D> shift;
+  std::vector<Vector3D> translation;
+  std::vector<Vector3D> rotation;
 
 public:
-  void addLibrary(std::string name) { libraries_vector.push_back(name); };
-  void addName(std::string name) { object_names_vector.push_back(name); };
-  void addScale(Vector3D scale) { object_scales_vector.push_back(scale); };
-  void addRgb(Vector3D rgb) { object_rgbs_vector.push_back(rgb); };
-  void addShift(Vector3D shift) { object_shift_vector.push_back(shift); };
-  void addRot(Vector3D rot) { object_rot_vector.push_back(rot); };
-  void addTrans(Vector3D trans) { object_trans_vector.push_back(trans); };
-  std::vector<std::string> getLibraries() { return libraries_vector; };
-  std::vector<std::string> getNames() { return object_names_vector; };
-  std::vector<Vector3D> getScales() { return object_scales_vector; };
-  std::vector<Vector3D> getRgbs() { return object_rgbs_vector; };
-  std::vector<Vector3D> getShift() { return object_shift_vector; };
-  std::vector<Vector3D> getRot() { return object_rot_vector; };
-  std::vector<Vector3D> getTrans() { return object_trans_vector; };
-  
+  void addLibrary(std::string name)
+  {
+    libraries.push_back(name);
+  };
+  void addName(std::string name)
+  {
+    names.push_back(name);
+  };
+  void addRgb(Vector3D rgb2)
+  {
+    rgb.push_back(rgb2);
+  };
+  void addShift(Vector3D shift2)
+  {
+    shift.push_back(shift2);
+  };
+  void addScale(Vector3D scale2)
+  {
+    scale.push_back(scale2);
+  };
+  void addRot(Vector3D rotation2)
+  {
+    rotation.push_back(rotation2);
+  };
+  void addTrans(Vector3D translation2)
+  {
+    translation.push_back(translation2);
+  };
+  std::vector<std::string> getLibraries()
+  {
+    return libraries;
+  };
+  std::vector<std::string> getNames()
+  {
+    return names;
+  };
+  std::vector<Vector3D> getScales()
+  {
+    return scale;
+  };
+  std::vector<Vector3D> getShift()
+  {
+    return shift;
+  };
+  std::vector<Vector3D> getRgbs()
+  {
+    return rgb;
+  };
+  std::vector<Vector3D> getTrans()
+  {
+    return translation;
+  };
+  std::vector<Vector3D> getRotation()
+  {
+    return rotation;
+  };
 };
-
 
 #endif

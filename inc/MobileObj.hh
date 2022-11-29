@@ -73,7 +73,8 @@
        Vector3D scale;
        Vector3D translation;
        Vector3D rgb;
-          void setScale(Vector3D new_scale) { scale = new_scale; }
+    
+       void setScale(Vector3D new_scale) { scale = new_scale; }
        void setRgb(Vector3D new_rgb) { rgb = new_rgb; }
        void setTranslation(Vector3D new_trans) { translation = new_trans; }
     

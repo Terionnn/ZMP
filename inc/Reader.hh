@@ -12,16 +12,21 @@
 #include "Configuration.hh"
 #include "xmlinterp.hh"
 
+#include <string>
+#include <map>
+#include <iostream>
+#include <sstream>
+#include "Set4LibInterfaces.hh"
+#include "Interp4Command.hh"
+#include <memory>
+
 #define LINE_SIZE 500
 
 class Reader
 {
-private:
-    std::string cmdFileName;
-
 public:
-    Reader(){};
-    bool init(std::string cmdFile);
-    bool execPreprocesor(std::istringstream &IStrm4Cmds);
+    
+    bool execPreprocesor(std::string cmdFile, std::istringstream &IStrm4Cmds);
     bool ReadFile(const char* sFileName, Configuration &rConfig);
+    bool interpret(std::istringstream &stream, Set4LibInterfaces Lib);
 };
