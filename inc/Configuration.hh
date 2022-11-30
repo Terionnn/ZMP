@@ -18,12 +18,14 @@ private:
   std::vector<Vector3D> rotation;
 
 public:
+
   void addLibrary(std::string name)
   {
     libraries.push_back(name);
   };
   void addName(std::string name)
   {
+    std::cout << "dodano " << name << std::endl;
     names.push_back(name);
   };
   void addRgb(Vector3D rgb2)
@@ -74,6 +76,7 @@ public:
   {
     return rotation;
   };
+
 };
 
 #endif

@@ -5,7 +5,7 @@
 #include "MobileObj.hh"
 #include "AccessControl.hh"
 #include "Configuration.hh"
-
+#include "Sender.hh"
 class Scene : public AccessControl
 {
 private:
@@ -19,4 +19,7 @@ public:
     MobileObj *FindMobileObj(const char *sName);
     void AddMobileObj(MobileObj *pMobObj);
     std::map<std::string, MobileObj> getMobileObjects() { return _Container4Objects; }
+    std::string Command();
+    std::string Send(MobileObj obj, std::string node);
+
 };

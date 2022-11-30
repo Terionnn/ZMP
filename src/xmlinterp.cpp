@@ -16,17 +16,11 @@ using namespace std;
  */
 XMLInterp4Config::XMLInterp4Config(Configuration &rConfig)
 {
-  config = rConfig;
+  config = &rConfig;
 }
 
-void XMLInterp4Config::Init(Configuration cfg)
-{
-  config = cfg;
-}
-/*!
- * Metoda wywoływana jest bezpośrednio przed rozpoczęciem
- * przetwarzana dokumentu XML.
- */
+
+ 
 void XMLInterp4Config::startDocument()
 {
   cout << "*** Rozpoczecie przetwarzania dokumentu XML." << endl;
@@ -70,7 +64,7 @@ void XMLInterp4Config::ProcessLibAttrs(const xercesc::Attributes  &rAttrs)
  cout << "  Nazwa biblioteki: " << sLibName << endl;
 
  // Tu trzeba wpisać własny kod ...
-
+config->addLibrary(sLibName);
  xercesc::XMLString::release(&sParamName);
  xercesc::XMLString::release(&sLibName);
 }
@@ -96,11 +90,18 @@ void XMLInterp4Config::ProcessCubeAttrs(const xercesc::Attributes  &rAttrs)
  char* sName_Name = xercesc::XMLString::transcode(rAttrs.getQName(0));
  char* sName_Scale = xercesc::XMLString::transcode(rAttrs.getQName(1));
  char* sName_RGB = xercesc::XMLString::transcode(rAttrs.getQName(2));
+ char* sName_Rot = xercesc::XMLString::transcode(rAttrs.getQName(3));
+ char* sName_Trans = xercesc::XMLString::transcode(rAttrs.getQName(4));
+ char* sName_Shift = xercesc::XMLString::transcode(rAttrs.getQName(5));
 
  XMLSize_t  Index = 0;
  char* sValue_Name    = xercesc::XMLString::transcode(rAttrs.getValue(Index));
  char* sValue_Scale = xercesc::XMLString::transcode(rAttrs.getValue(1));
  char* sValue_RGB     = xercesc::XMLString::transcode(rAttrs.getValue(2));
+ char* sValue_Rot  = xercesc::XMLString::transcode(rAttrs.getValue(3));
+ char* sValue_Trans  = xercesc::XMLString::transcode(rAttrs.getValue(4));
+ char* sValue_Shift  = xercesc::XMLString::transcode(rAttrs.getValue(5));
+
 
 
  //-----------------------------------------------------------------------------
@@ -110,6 +111,10 @@ void XMLInterp4Config::ProcessCubeAttrs(const xercesc::Attributes  &rAttrs)
       << "     " << sName_Name << " = \"" << sValue_Name << "\"" << endl
       << "     " << sName_Scale << " = \"" << sValue_Scale << "\"" << endl
       << "     " << sName_RGB << " = \"" << sValue_RGB << "\"" << endl   
+      << "     " << sName_Shift << " = \"" << sValue_Shift << "\"" << endl   
+      << "     " << sName_Rot << " = \"" << sValue_Rot << "\"" << endl   
+      << "     " << sName_Trans<< " = \"" << sValue_Trans << "\"" << endl   
+
       << endl; 
       
  //-----------------------------------------------------------------------------
@@ -119,28 +124,37 @@ void XMLInterp4Config::ProcessCubeAttrs(const xercesc::Attributes  &rAttrs)
  // wektorów, np.
  //
  //
- // istringstream IStrm;
- // IStrm.str(sValue_Scale);
- // Vector3D  Scale;
- //
- // IStrm >> Scale;
- //
- istringstream   IStrm;
+  istringstream IStrm;
+  IStrm.str(sValue_Scale);
+  Vector3D  Scale, Rgb, Rot, Trans, Shift;
+  IStrm >> Scale[0] >> Scale[1] >> Scale[2];
 
- 
- IStrm.str(sValue_Scale);
- double  Sx,Sy,Sz;
-
- IStrm >> Sx >> Sy >> Sz;
  if (IStrm.fail()) {
      cerr << " Blad!!!" << endl;
- } else {
-     cout << " Czytanie wartosci OK!!!" << endl;
-     cout << "     " << Sx << "  " << Sy << "  " << Sz << endl;
- }
+ } 
+  IStrm.str(sValue_RGB);
+  IStrm >> Rgb[0] >> Rgb[1] >> Rgb[2];
 
- // Tu trzeba wstawić odpowiednio własny kod ...
+  IStrm.str(sValue_Rot);
+  IStrm >> Rot[0] >> Rot[1] >> Rot[2];
+
+  IStrm.str(sValue_Shift);
+  IStrm >> Shift[0] >> Shift[1] >> Shift[2];
+
+  IStrm.str(sValue_Trans);
+  IStrm >> Trans[0] >> Trans[1] >> Trans[2];
+  
  
+ // Tu trzeba wstawić odpowiednio własny kod ...
+ std::cout << "okk";
+ config->addName(sValue_Name);
+ config->addScale(Scale);
+ config->addRgb(Rgb);
+ config->addShift(Shift);
+ config->addTrans(Trans);
+ config->addRot(Rot);
+
+
  xercesc::XMLString::release(&sName_Name);
  xercesc::XMLString::release(&sName_Scale);
  xercesc::XMLString::release(&sName_RGB);

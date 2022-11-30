@@ -21,6 +21,7 @@ int main()
   reader.execPreprocesor("polecenia.cmd", stream);
   reader.interpret(stream, Lib);
   reader.ReadFile("config/config.xml", config);
+  
 
   Scene scene(config);
   Sender sender(&scene);
@@ -36,6 +37,14 @@ int main()
       "AddObj Name=Podstawa2.Ramie1.Ramie2 RGB=(100,240,0) Scale=(2,2,1) Shift=(0.5,0,0) RotXYZ_deg=(0,-45,0) Trans_m=(3,0,0)\n";
 
   sender.Send(sConfigCmds);
+  shared_ptr<LibInterface> tmpLib;
+
+  map<string, MobileObj>::iterator iterator = scene._Container4Objects.begin();
+  //tmpLib = iterator->second;
+  //string str = scene.Send(tmpLib, "AddObj");
+  const char* cst = str.c_str();
+  sender.Send(cst);
   sender.Send("Close\n");
+
 }      
 
